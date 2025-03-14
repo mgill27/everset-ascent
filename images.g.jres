@@ -4,6 +4,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Climber back"
     },
+    "image2": {
+        "data": "hwQRABEAAAAAAAAAAAAAAAAAAAAAALC7u7sAAAAAAAAAsNvd3d27AAAAAAAA27vd3d3dCwAAAAAAu9vd3d27CwAAAACwvd3d3b3bvQAAAACw3d3d3d3dvQAAAACw3d3d3d3dvQAAAACw3d3d3d3dvQAAAACw3d3d3d3dvQAAAACw3d3d3d3dvQAAAACw3dvd3d3dvQAAAAAA273b3d3dCwAAAAAA273d3d3dCwAAAAAAsNvd3d27AAAAAAAAALC7u7sAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Boulder"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

@@ -22,6 +22,26 @@ namespace myImages {
 . . . . . f f f f f f . . . . . 
 . . . . . f f . . f f . . . . . 
 `;
+            case "image2":
+            case "Boulder":return img`
+. . . . . . . . . . . . . . . . . 
+. . . . . b b b b b b b . . . . . 
+. . . b b d d d d d d d b b . . . 
+. . b d b b d d d d d d d d b . . 
+. . b b b d d d d d d b d d b . . 
+. b d b d d d d d d d d b b d b . 
+. b d d d d d d d d d d b d d b . 
+. b d d d d d d d d d d d d d b . 
+. b d d d d d d d d d d d d d b . 
+. b d d d d d d d d d d d d d b . 
+. b d d d d d d d d d d d d d b . 
+. b d d d b d d d d d d d d d b . 
+. . b d b b d d d d d d d d b . . 
+. . b d b d d d d d d d d d b . . 
+. . . b b d d d d d d d b b . . . 
+. . . . . b b b b b b b . . . . . 
+. . . . . . . . . . . . . . . . . 
+`;
         }
         return null;
     })

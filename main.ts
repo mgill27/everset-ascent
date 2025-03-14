@@ -122,4 +122,5 @@ scene.setBackgroundImage(img`
     `)
 let Climber = sprites.create(assets.image`Climber back`, SpriteKind.Player)
 controller.moveSprite(Climber, 100, 0)
+Climber.y = 100
 Climber.setStayInScreen(true)
