@@ -9,11 +9,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Bigger mountain"
     },
-    "image2": {
-        "data": "hwQRABEAAAAAAAAAAAAAAAAAAAAAAJCZmZkAAAAAAAAAkBkRERGZAAAAAAAAGZkRERERCQAAAAAAmRkRERGZCQAAAACQkREREZEZkQAAAACQERERERERkQAAAACQERERERERkQAAAACQERERERERkQAAAACQERERERERkQAAAACQERERERERkQAAAACQERkRERERkQAAAAAAGZEZERERCQAAAAAAGZERERERCQAAAAAAkBkRERGZAAAAAAAAAJCZmZkAAAAAAAAAAAAAAAAAAAAAAAA=",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Snowball"
-    },
     "image6": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAPD///+AZgAA/29mZm9tAPBmZmZm9v8A8GZmZmb2aAZvZmZmZvZoBm9mZmZm9mgPb2ZmZmb2aA9vZmZmZvZo//BmZmZm9mj/8GZmZmb2/wAA/29mZm9tAADw////gGYAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -23,6 +18,11 @@
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAPD///+AZgAA/29mZm9tAPBmZmZm9v8A8GZmZmb2aP9vZmZmZvZo/29mZmZm9mgPb2ZmZmb2aA9vZmZmZvZoBvBmZmZm9mgG8GZmZmb2/wAA/29mZm9tAADw////gGYAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Climber walk2"
+    },
+    "image2": {
+        "data": "hwQQABAAAAAAAJCZmZkAAACQGREREZkAABmZEREREQmQERERERERCRmRGREREZmZGZERERGRGZEZERERERERkRkRERERERGRGREREREREZEZERERERERkRkRERERERGRGREZEREREZGQEZEZERERCQAZkREREREJAJAZERERmQAAAJCZmZkAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Snowball"
     },
     "anim1": {
         "namespace": "myAnimations",
