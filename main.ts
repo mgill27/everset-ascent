@@ -46,14 +46,25 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    flashing = true
+function Flash () {
     animation.runImageAnimation(
     Climber,
     assets.animation`damage anim`,
     200,
     true
     )
+    pause(500)
+    animation.runImageAnimation(
+    Climber,
+    assets.animation`idle`,
+    200,
+    true
+    )
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    flashing = true
+    Flash()
+    flashing = false
 })
 let flashing = false
 let Climber: Sprite = null
