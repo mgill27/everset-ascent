@@ -1,6 +1,65 @@
-let speed = 100
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (flashing == true) {
+    	
+    } else {
+        animation.runImageAnimation(
+        Climber,
+        assets.animation`Walking`,
+        200,
+        true
+        )
+    }
+})
+controller.right.onEvent(ControllerButtonEvent.Released, function () {
+    if (flashing == true) {
+    	
+    } else {
+        animation.runImageAnimation(
+        Climber,
+        assets.animation`idle`,
+        200,
+        true
+        )
+    }
+})
+controller.left.onEvent(ControllerButtonEvent.Released, function () {
+    if (flashing == true) {
+    	
+    } else {
+        animation.runImageAnimation(
+        Climber,
+        assets.animation`idle`,
+        200,
+        true
+        )
+    }
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (flashing == true) {
+    	
+    } else {
+        animation.runImageAnimation(
+        Climber,
+        assets.animation`Walking`,
+        200,
+        true
+        )
+    }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    flashing = true
+    animation.runImageAnimation(
+    Climber,
+    assets.animation`damage anim`,
+    200,
+    true
+    )
+})
+let flashing = false
+let Climber: Sprite = null
+let speed = 50
 scene.setBackgroundImage(assets.image`Bigger mountain`)
-let Climber = sprites.create(assets.image`Climber back`, SpriteKind.Player)
+Climber = sprites.create(assets.image`Climber back`, SpriteKind.Player)
 controller.moveSprite(Climber, 100, 0)
 Climber.y = 100
 Climber.setStayInScreen(true)
@@ -14,5 +73,6 @@ game.onUpdateInterval(500, function () {
         Snowball.x = randint(0, scene.screenWidth())
         Snowball.y = 0
         Snowball.setVelocity(0, 50)
+        speed += 1
     }
 })
