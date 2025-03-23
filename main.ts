@@ -1,10 +1,10 @@
 function SpawnSnowballs () {
-    for (let index = 0; index < randint(0, 3); index++) {
+    for (let index = 0; index < randint(0, Difficulty + 3); index++) {
         if (activeSnowballs < 3) {
             Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
-            Snowball.x = randint(0, scene.screenWidth())
+            Snowball.x = randint(0.5, scene.screenWidth() - 0.5)
             Snowball.y = 0
-            Snowball.setVelocity(0, randint(0, speed))
+            Snowball.setVelocity(0, speed - randint(0, 25))
             activeSnowballs += 1
         }
     }
@@ -81,6 +81,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let flashing = false
 let Snowball: Sprite = null
 let Climber: Sprite = null
+let Difficulty = 0
 let speed = 0
 let activeSnowballs = 0
 game.splash("You need to reach 100 altitude-")
@@ -90,6 +91,7 @@ game.splash("Good luck!")
 info.setScore(0)
 activeSnowballs = 0
 speed = 50
+Difficulty = 0
 scene.setBackgroundImage(assets.image`Bigger mountain`)
 Climber = sprites.create(assets.image`Climber back`, SpriteKind.Player)
 controller.moveSprite(Climber, 100, 0)
@@ -99,9 +101,9 @@ Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
 Snowball.x = randint(0.5, scene.screenWidth() - 0.5)
 Snowball.y = 0
 Snowball.setVelocity(0, speed)
-game.onUpdateInterval(5000, function () {
-    if (info.score() > 5) {
-        SpawnSnowballs()
+forever(function () {
+    if (info.score() >= 15) {
+        Difficulty = info.score() / 5
     }
 })
 game.onUpdateInterval(500, function () {
@@ -111,5 +113,11 @@ game.onUpdateInterval(500, function () {
         Snowball.y = 0
         Snowball.setVelocity(0, 50)
         speed += 1
+        info.changeScoreBy(1)
+    }
+})
+game.onUpdateInterval(3000, function () {
+    if (info.score() > 3) {
+        SpawnSnowballs()
     }
 })
