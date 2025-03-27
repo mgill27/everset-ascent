@@ -4,7 +4,7 @@ function SpawnSnowballs () {
             Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
             Snowball.x = randint(0, scene.screenWidth())
             Snowball.y = 0
-            Snowball.setVelocity(0, randint(0, speed))
+            Snowball.setVelocity(0, randint(speed, speed + 25))
             activeSnowballs += 1
         }
     }
@@ -57,6 +57,14 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprites.destroy(Snowball)
+    music.play(music.createSoundEffect(WaveShape.Square, 200, 1, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+    flashing = true
+    Flash()
+    flashing = false
+    pause(500)
+})
 function Flash () {
     animation.runImageAnimation(
     Climber,
@@ -72,12 +80,6 @@ function Flash () {
     true
     )
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    flashing = true
-    Flash()
-    flashing = false
-    pause(500)
-})
 let flashing = false
 let Snowball: Sprite = null
 let Climber: Sprite = null
@@ -106,11 +108,13 @@ game.onUpdateInterval(5000, function () {
 })
 game.onUpdateInterval(500, function () {
     if (Snowball.y > scene.screenHeight()) {
-        Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Enemy)
+        Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
         Snowball.x = randint(0, scene.screenWidth())
         Snowball.y = 0
         Snowball.setVelocity(0, 50)
         speed += 1
         info.changeScoreBy(1)
+    } else if (false) {
+    	
     }
 })
