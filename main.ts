@@ -59,7 +59,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     sprites.destroy(Snowball)
-    music.play(music.createSoundEffect(WaveShape.Square, 200, 1, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+    Player_Damaged = true
+    info.changeLifeBy(-1)
+    music.play(music.createSoundEffect(WaveShape.Square, 189, 1, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
     flashing = true
     Flash()
     flashing = false
@@ -80,6 +82,7 @@ function Flash () {
     true
     )
 }
+let Player_Damaged = false
 let flashing = false
 let Snowball: Sprite = null
 let Climber: Sprite = null
@@ -89,6 +92,7 @@ game.splash("You need to reach 100 altitude-")
 game.splash("before the mountain collapses.")
 scene.setBackgroundImage(assets.image`Smile`)
 game.splash("Good luck!")
+info.setLife(3)
 info.setScore(0)
 activeSnowballs = 0
 speed = 50
@@ -114,7 +118,11 @@ game.onUpdateInterval(500, function () {
         Snowball.setVelocity(0, 50)
         speed += 1
         info.changeScoreBy(1)
-    } else if (false) {
-    	
+    } else if (Player_Damaged == true) {
+        Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
+        Player_Damaged = false
+        Snowball.x = randint(0, scene.screenWidth())
+        Snowball.y = 0
+        Snowball.setVelocity(0, 50)
     }
 })
