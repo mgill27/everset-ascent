@@ -1,6 +1,9 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    info.setScore(99)
+})
 function SpawnSnowballs () {
     for (let index = 0; index < randint(0, 3); index++) {
-        if (activeSnowballs < 3) {
+        if (activeSnowballs < 3 && SnowballsSpawning == true) {
             Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
             Snowball.x = randint(0, scene.screenWidth())
             Snowball.y = 0
@@ -87,6 +90,7 @@ let flashing = false
 let Snowball: Sprite = null
 let Climber: Sprite = null
 let speed = 0
+let SnowballsSpawning = false
 let activeSnowballs = 0
 game.splash("You need to reach 100 altitude-")
 game.splash("before the mountain collapses.")
@@ -95,6 +99,7 @@ game.splash("Good luck!")
 info.setLife(3)
 info.setScore(0)
 activeSnowballs = 0
+SnowballsSpawning = true
 speed = 50
 scene.setBackgroundImage(assets.image`Bigger mountain`)
 Climber = sprites.create(assets.image`Climber back`, SpriteKind.Player)
@@ -110,13 +115,26 @@ game.onUpdateInterval(5000, function () {
         SpawnSnowballs()
     }
 })
+forever(function () {
+    if (info.score() == 100) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
+        SnowballsSpawning = false
+        scene.setBackgroundImage(assets.image`Victory`)
+        music.play(music.stringPlayable("G B A G C5 B A B ", 120), music.PlaybackMode.UntilDone)
+        game.splash("You did it! Congrats!")
+        game.splash("Press A to play again")
+        game.reset()
+    }
+})
 game.onUpdateInterval(500, function () {
-    if (Snowball.y > scene.screenHeight()) {
+    if (Snowball.y > scene.screenHeight() && SnowballsSpawning == true) {
         Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
         Snowball.x = randint(0, scene.screenWidth())
         Snowball.y = 0
         Snowball.setVelocity(0, 50)
         speed += 1
+        music.play(music.createSoundEffect(WaveShape.Square, 400, 600, 255, 0, 100, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         info.changeScoreBy(1)
     } else if (Player_Damaged == true) {
         Snowball = sprites.create(assets.image`Snowball`, SpriteKind.Projectile)
